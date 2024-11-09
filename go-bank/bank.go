@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
+func writeBalanceToFile(balance float64){
+    balanceText :=fmt.Sprint(balance)
+	os.WriteFile("balance.txt",[]byte(balanceText), 0644)
+}
 func main(){
 	var accountBalance float64 = 1000 
 	fmt.Println("Welcome to Go Bank")
@@ -17,43 +24,42 @@ func main(){
 		fmt.Println("Your choice: ")
 		fmt.Scan(&choice)
 	
-		fmt.Printf("Your choice %v",choice)
-	
-		if choice == 1 {
-		  fmt.Println("Your Balance is:", accountBalance)
-		} else if choice == 2 {
-		  fmt.Println("How much do you want to deposit?")
-		  var depositAmount float64
-		  fmt.Scan(&depositAmount)
-	
-		  if depositAmount <= 0{
-			fmt.Println("Invalid amount.")
-			// return
-			continue
-		  }
-		  accountBalance += depositAmount
-		  fmt.Println("New accountBalance:",accountBalance)
-		} else if choice == 3 {
+		switch choice {
+		case 1:
+			fmt.Println("Your Balance is:", accountBalance)
+		case 2:
+			fmt.Println("How much do you want to deposit?")
+			var depositAmount float64
+			fmt.Scan(&depositAmount)
+	  
+			if depositAmount <= 0{
+			  fmt.Println("Invalid amount.")
+			  // return
+			  continue
+			}
+			accountBalance += depositAmount
+			fmt.Println("New accountBalance:",accountBalance)
+			writeBalanceToFile(accountBalance)
+		case 3:
 			fmt.Println("How much do you want to withdraw?")
 			var withdrawAmount float64
 			fmt.Scan(&withdrawAmount)
 	
 			if withdrawAmount <= 0 {
 				fmt.Println("You cant withdraw<")
-				return
+				continue
 			  }
 	
 			if withdrawAmount > accountBalance {
 				fmt.Println("You cant withdraw>")
-				return
+				continue
 			  }
 			accountBalance -= withdrawAmount
 			fmt.Println("New accountBalance", accountBalance)
-		} else {
+			writeBalanceToFile(accountBalance)
+		default:
 			fmt.Println("Goodbye")
-			// return
-			break
+			return
 		}
 	}
-	fmt.Println("Thanks")
 }
