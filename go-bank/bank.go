@@ -23,6 +23,12 @@ func main(){
 	  fmt.Println("How much do you want to deposit?")
 	  var depositAmount float64
 	  fmt.Scan(&depositAmount)
+
+	  if depositAmount <= 0{
+		fmt.Println("Invalid amount.")
+		return
+	  }
+	  
 	  accountBalance += depositAmount
 	  fmt.Println("New accountBalance:",accountBalance)
 	} else if choice == 3 {
