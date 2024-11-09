@@ -35,8 +35,14 @@ func main(){
 		var withdrawAmount float64
 		fmt.Scan(&withdrawAmount)
 
+		if withdrawAmount <= accountBalance {
+			fmt.Println("You cant withdraw")
+			return
+		  }
+
 		if withdrawAmount > accountBalance {
 			fmt.Println("You cant withdraw")
+			return
 		  }
 		accountBalance -= withdrawAmount
 		fmt.Println("New accountBalance", accountBalance)
