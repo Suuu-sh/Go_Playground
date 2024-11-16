@@ -12,6 +12,24 @@ type User struct {
 	// createdAt time.Time
 }
 
+type Admin struct {
+	email    string
+	password string
+	User     User
+}
+
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		User: User{
+			firstName: "ADMIN",
+			lastName:  "ADMIN",
+			birthDate: "---",
+		},
+	}
+
+}
 func NewUser(userFirstName, userLastName, userBirthDate string) (*User, error) {
 	if userFirstName == "" || userLastName == "" || userBirthDate == "" {
 		return nil, errors.New("required")

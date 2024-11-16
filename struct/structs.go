@@ -12,6 +12,9 @@ func main() {
 	userBirthDate := user.GetUserData("please")
 
 	appUser, err := user.NewUser(userFirstName, userLastName, userBirthDate)
+	admin := user.NewAdmin("test", "test")
+
+	admin.User.OutPutUserDetails2()
 
 	if err != nil {
 		fmt.Println(err)
