@@ -1,40 +1,37 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+
+	"example.com/practice-struct-practice/note"
 )
 
 func main() {
-	getNoteData()
-}
+	title, content := getNoteData()
+	userNote, err := note.New(title, content)
 
-func getNoteData() (string, string, error) {
-	title, err := getUserInput("Note title:")
-
+	fmt.Println(userNote)
 	if err != nil {
 		fmt.Println(err)
-		return "", "", err
+		return
 	}
-
-	content, err := getUserInput("Note content:")
-
-	if err != nil {
-		fmt.Println(err)
-		return "", "", err
-	}
-
-	return title, content, err
 }
 
-func getUserInput(prompt string) (string, error) {
+func getNoteData() (string, string) {
+	title := getUserInput("Note title:")
+	content := getUserInput("Note content:")
+
+	return title, content
+}
+
+func getUserInput(prompt string) string {
 	fmt.Print(prompt)
 	var value string
 	fmt.Scan(&value)
 
 	if value == "" {
-		return "", errors.New("empty")
+		return ""
 	}
 
-	return value, nil
+	return value
 }
