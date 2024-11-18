@@ -29,6 +29,7 @@ type outputtable interface {
 }
 
 func main() {
+	printSomething(1)
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text:")
 
@@ -59,6 +60,10 @@ func main() {
 func outputData(data outputtable) error {
 	data.Display()
 	return saveData(data)
+}
+
+func printSomething(value interface{}) {
+	fmt.Println(value)
 }
 
 func saveData(data saver) error {
