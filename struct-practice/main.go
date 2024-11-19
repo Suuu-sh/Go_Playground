@@ -70,7 +70,7 @@ func printSomething(value interface{}) {
 		return
 	}
 
-	stringVal, ok := value.(float)
+	stringVal, ok := value.(float64)
 
 	if ok {
 		fmt.Println("float", stringVal)
