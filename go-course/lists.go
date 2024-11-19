@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Product struct {
 	title string
 	id    string
@@ -8,6 +10,16 @@ type Product struct {
 
 type TemperatureData struct {
 	day1 float64
+}
+
+func main() {
+	prices := []float64{10.99, 8.99}
+	fmt.Println(prices[0:1])
+	prices[1] = 9.99
+	prices[1] = 11.99
+
+	updatedPrices := append(prices, 5.99)
+	fmt.Println(updatedPrices, prices)
 }
 
 // func main() {
