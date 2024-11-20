@@ -12,7 +12,7 @@ type TemperatureData struct {
 	day1 float64
 }
 
-func main() {
+func mainf() {
 	prices := []float64{10.99, 8.99}
 	fmt.Println(prices[0:1])
 	prices[1] = 9.99
