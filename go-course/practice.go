@@ -8,7 +8,7 @@ func main() {
 
 	discountPrices := []float64{3.4, 3.3, 4.3}
 	prices = append(prices, discountPrices...)
-	fmt.Println(prices)
+	fmt.Println(prices)f
 }
 
 // func main() {
