@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-func main() {
+func maies() {
 	prices := []float64{10.99, 8.99}
 	fmt.Println(prices[0:1])
 
 	discountPrices := []float64{3.4, 3.3, 4.3}
 	prices = append(prices, discountPrices...)
-	fmt.Println(prices)f
+	fmt.Println(prices)
 }
 
 // func main() {
